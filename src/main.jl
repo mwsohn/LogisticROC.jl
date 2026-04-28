@@ -63,3 +63,13 @@ function lroc(glmout; rocplot=true)
     end
     return rocval
 end
+
+"""
+    auc(logitmodel)
+
+Returns the Area under the ROC Curve for a logit model. If you just need the AUC value, use this function.
+"""
+function auc(glmout)
+    return ROCAnalysis.AUC(ROCAnalysis.roc(rocinput(glmout)...))
+end
+
